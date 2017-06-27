@@ -33,5 +33,5 @@ public class HelloJNI {
     //c访问java构造方法
     public native Date  callConstructor();
     //c访问java父类方法
-    public native Date  callParentMethod();
+    public native void  callParentMethod();
 }

@@ -1,1 +1,6 @@
 /build
+/.externalNativeBuild
+/libs
+.gitignore
+app.iml
+proguard-rules.pro

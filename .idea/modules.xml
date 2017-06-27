@@ -4,8 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NdkStudy.iml" filepath="$PROJECT_DIR$/NdkStudy.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/jniproject/jniproject.iml" filepath="$PROJECT_DIR$/jniproject/jniproject.iml" />
-      <module fileurl="file://$PROJECT_DIR$/jniproject2/jniproject2.iml" filepath="$PROJECT_DIR$/jniproject2/jniproject2.iml" />
     </modules>
   </component>
 </project>

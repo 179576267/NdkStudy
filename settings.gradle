@@ -1,1 +1,1 @@
-include ':app', ':jniproject', ':jniproject2'
+include ':app'

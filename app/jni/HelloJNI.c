@@ -90,17 +90,24 @@ JNIEXPORT jobject JNICALL Java_com_wzf_ndkstudy_jni_HelloJNI_callConstructor(JNI
 }
 
 //访问父类方法 java引用调用重写了的父类方法不行， 可以通过c来调用
-JNIEXPORT jobject JNICALL Java_com_wzf_ndkstudy_jni_HelloJNI_callParentMethod(JNIEnv *env, jobject jObj){
+JNIEXPORT void JNICALL Java_com_wzf_ndkstudy_jni_HelloJNI_callParentMethod(JNIEnv *env, jobject jObj){
    jclass cls = (*env)->GetObjectClass(env, jObj);
    //获取testClass 字段
    jfieldID  fid = (*env)->GetFieldID(env, cls, "testClass", "Lcom/wzf/ndkstudy/model/Parent;");
+
    //获取字段的对象
    jobject  fid_obj = (*env)->GetObjectField(env, jObj, fid);
+    jclass  fid_cls = (*env)->GetObjectClass(env, fid_obj);
+    if(fid_cls == NULL){
+        LOG_D("%s\n", "fid_cls IS NULL");
+    }
    //获取相应的方法
-   jmethodID mid = (*env)->GetMethodID(env,cls, "printFormParent", "(I)Ljava/lang/String");
+   jmethodID mid = (*env)->GetMethodID(env,fid_cls, "printFormParent", "(I)Ljava/lang/String;");
+    if(mid == NULL){
+        LOG_D("%s\n", "MID IS NULL");
+    }
    //执行方法
-   jobject result = (*env)->CallObjectMethod(env, jObj, mid, 123);
-
+   jobject result = (*env)->CallObjectMethod(env, fid_obj, mid, 123);
    char * retString = (*env)->GetStringUTFChars(env, result, NULL);
    LOG_I("method result : %s\n", retString);
 }
