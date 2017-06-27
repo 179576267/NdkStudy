@@ -45,7 +45,7 @@ JNIEXPORT jstring JNICALL Java_com_wzf_ndkstudy_jni_HelloJNI_changeKey(JNIEnv *e
 
 }
 
-
+//调用java方法
 JNIEXPORT void JNICALL Java_com_wzf_ndkstudy_jni_HelloJNI_runJavaMethod(JNIEnv *env, jobject jObj){
    //获取jclass
    jclass cls = (*env)->GetObjectClass(env, jObj);
@@ -72,4 +72,35 @@ JNIEXPORT void JNICALL Java_com_wzf_ndkstudy_jni_HelloJNI_runJavaMethod(JNIEnv *
    retString = (*env)->GetStringUTFChars(env, str, NULL);
    LOG_I("static method return value is : %s\n", retString);
 
+}
+
+//访问构造方法 <init>
+//使用java.util.Date产生一个当前的时间戳
+JNIEXPORT jobject JNICALL Java_com_wzf_ndkstudy_jni_HelloJNI_callConstructor(JNIEnv *env, jobject jObj){
+   jclass cls = (*env)->FindClass(env, "java/util/Date");
+   jmethodID  mid = (*env)->GetMethodID(env, cls, "<init>", "()V");
+   //实例化一个对象
+   jobject  date_obj = (*env)->NewObject(env, cls, mid);
+   //获取getTime方法id
+   jmethodID  getTimeId = (*env)->GetMethodID(env, cls, "getTime", "()J");
+   //调用getTime方法
+   jlong  time = (*env)->CallLongMethod(env, date_obj, getTimeId);
+   LOG_I("时间戳为：%lld\n", time);
+   return date_obj;
+}
+
+//访问父类方法 java引用调用重写了的父类方法不行， 可以通过c来调用
+JNIEXPORT jobject JNICALL Java_com_wzf_ndkstudy_jni_HelloJNI_callParentMethod(JNIEnv *env, jobject jObj){
+   jclass cls = (*env)->GetObjectClass(env, jObj);
+   //获取testClass 字段
+   jfieldID  fid = (*env)->GetFieldID(env, cls, "testClass", "Lcom/wzf/ndkstudy/model/Parent;");
+   //获取字段的对象
+   jobject  fid_obj = (*env)->GetObjectField(env, jObj, fid);
+   //获取相应的方法
+   jmethodID mid = (*env)->GetMethodID(env,cls, "printFormParent", "(I)Ljava/lang/String");
+   //执行方法
+   jobject result = (*env)->CallObjectMethod(env, jObj, mid, 123);
+
+   char * retString = (*env)->GetStringUTFChars(env, result, NULL);
+   LOG_I("method result : %s\n", retString);
 }

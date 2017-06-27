@@ -47,6 +47,22 @@ JNIEXPORT jstring JNICALL Java_com_wzf_ndkstudy_jni_HelloJNI_changeKey
 JNIEXPORT void JNICALL Java_com_wzf_ndkstudy_jni_HelloJNI_runJavaMethod
   (JNIEnv *, jobject);
 
+/*
+ * Class:     com_wzf_ndkstudy_jni_HelloJNI
+ * Method:    callConstructor
+ * Signature: ()Ljava/util/Date;
+ */
+JNIEXPORT jobject JNICALL Java_com_wzf_ndkstudy_jni_HelloJNI_callConstructor
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_wzf_ndkstudy_jni_HelloJNI
+ * Method:    callParentMethod
+ * Signature: ()Ljava/util/Date;
+ */
+JNIEXPORT jobject JNICALL Java_com_wzf_ndkstudy_jni_HelloJNI_callParentMethod
+  (JNIEnv *, jobject);
+
 #ifdef __cplusplus
 }
 #endif

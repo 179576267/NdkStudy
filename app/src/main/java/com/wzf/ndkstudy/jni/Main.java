@@ -1,5 +1,7 @@
 package com.wzf.ndkstudy.jni;
 
+import java.util.Date;
+
 /**
  * @Description:
  * @author: wangzhenfei
@@ -25,7 +27,17 @@ public class Main {
         /**
          * 调用非静态方法
          */
-        jni.runJavaMethod();
+//        jni.runJavaMethod();
 
+        /**
+         * 在c中实例化java对象
+         */
+//        Date date = jni.callConstructor();
+//        System.out.println(date.toString());
+        /**
+         * 访问父类构造方法
+         */
+        jni.testClass.printFormParent(20);
+        jni.callParentMethod();
     }
 }
