@@ -5,10 +5,7 @@
 #include <string.h>
 
 JNIEXPORT void JNICALL Java_com_wzf_ndkstudy_jni_HelloJNI_sayHello(JNIEnv *env, jobject thisObj) {
-   LOG_E("Hello World!\n", 0);
    LOG_I("%s  %d\n", "大小为：", 200);
-   LOG_D("%s  %d\n", "大小为：", 200);
-   LOG_W("%s  %d\n", "大小为：", 200);
    return;
 }
 
@@ -50,5 +47,29 @@ JNIEXPORT jstring JNICALL Java_com_wzf_ndkstudy_jni_HelloJNI_changeKey(JNIEnv *e
 
 
 JNIEXPORT void JNICALL Java_com_wzf_ndkstudy_jni_HelloJNI_runJavaMethod(JNIEnv *env, jobject jObj){
+   //获取jclass
+   jclass cls = (*env)->GetObjectClass(env, jObj);
+   //非静态方法调用
+   jmethodID  methodId = (*env)->GetMethodID(env, cls, "callByC", "(I)Ljava/lang/String;");
+   if(methodId == NULL){
+      LOG_E("%s\n", "method not find");
+      return;
+   }
+   //调用
+   jint num = 10;
+   jobject  str = (*env)->CallObjectMethod(env, jObj, methodId, num);
+   char *retString = (*env)->GetStringUTFChars(env, str, NULL);
+   LOG_I("return value is : %s\n", retString);
+
+   //静态方法调用
+   jmethodID  smethodId = (*env)->GetStaticMethodID(env, cls, "callStaticByC", "(I)Ljava/lang/String;");
+   if(smethodId == NULL){
+      LOG_E("%s\n", "smethodId not find");
+      return;
+   }
+   //调用
+   str = (*env)->CallStaticObjectMethod(env, cls, smethodId, num);
+   retString = (*env)->GetStringUTFChars(env, str, NULL);
+   LOG_I("static method return value is : %s\n", retString);
 
 }

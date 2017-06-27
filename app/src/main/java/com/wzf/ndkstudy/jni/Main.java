@@ -18,8 +18,14 @@ public class Main {
         /**
          * 修改非静态字段
          */
-        System.out.println("key修改前：" + jni.key);
-        System.out.println( jni.changeKey());
-        System.out.println("key修改后: " + jni.key);
+//        System.out.println("key修改前：" + jni.key);
+//        System.out.println( jni.changeKey());
+//        System.out.println("key修改后: " + jni.key);
+
+        /**
+         * 调用非静态方法
+         */
+        jni.runJavaMethod();
+
     }
 }

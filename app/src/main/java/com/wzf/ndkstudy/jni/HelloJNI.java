@@ -7,10 +7,17 @@ public class HelloJNI {
         System.loadLibrary("HelloJNI");
     }
 
-    public String callByC(){
-        System.out.println("callByC");
-        return key;
+    public static String callStaticByC(int num){
+        System.out.println("callStaticByC: " + num);
+        return "callStaticByC: " + num;
     }
+
+    private String callByC(int num){
+        System.out.println("callByC: " + num);
+        return "callByC: " + num;
+    }
+
+
 
     public native void sayHello();
     public native String sayHelloString();
