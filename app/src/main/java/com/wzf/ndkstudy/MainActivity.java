@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, FileEdDecodeActivity.class));
                 break;
             case R.id.FileSpliceActivity:
-
+                startActivity(new Intent(this, FileSpliceActivity.class));
                 break;
         }
     }

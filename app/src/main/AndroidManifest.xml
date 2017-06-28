@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".FileEdDecodeActivity"></activity>
+        <activity android:name=".FileSpliceActivity"></activity>
     </application>
 
 </manifest>
