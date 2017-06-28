@@ -10,6 +10,7 @@ public class HelloJNI {
     public String key = "i am in java";
     static {
         System.loadLibrary("HelloJNI");
+        initIds();
     }
     public Parent testClass = new Child();
     public static String callStaticByC(int num){
@@ -22,6 +23,11 @@ public class HelloJNI {
         return "callByC: " + num;
     }
 
+    public void testGlobalRef(){
+        createGlobalRef();
+        System.out.println(getGlobalRef());
+        deleteGlobalRef();
+    }
 
     public native void sayHello();
     public native String sayHelloString();
@@ -34,4 +40,19 @@ public class HelloJNI {
     public native Date  callConstructor();
     //c访问java父类方法
     public native void  callParentMethod();
+    //中文乱码
+    public native String  chineseChars(String str);
+    //传入数组给C 排序
+    public native String[]  giveSortArray(int [] array);
+    //局部引用优化
+    public native void localRef();
+    //全局引用优化
+    public native void createGlobalRef();
+    public native String getGlobalRef();
+    public native void deleteGlobalRef();
+    //异常处理
+    public native void exception();
+    //缓存策略
+    public native void jniCache();
+    public static native void initIds();//初始化全局变量，一般在loadLibrary后调用
 }
