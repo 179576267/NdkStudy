@@ -1,7 +1,7 @@
 #include <jni.h>
 #include<stdio.h>
 #include<stdlib.h>
-#include "../header/log.h"
+#include "../header/android_log.h"
 
 char pwd[] = "wangzhenfei";
 
@@ -10,7 +10,7 @@ Java_com_wzf_ndkstudy_jni_AndroidNdkUtils_encodeFile(JNIEnv *env, jobject instan
                                                      jstring des_) {
     const char *src = (*env)->GetStringUTFChars(env, src_, 0);
     const char *des = (*env)->GetStringUTFChars(env, des_, 0);
-    LOG_I("encodeFilePath: %s\n", src);
+    LOG_I_DEBUG("encodeFilePath: %s", src);
 
     // TODO
 
@@ -43,7 +43,7 @@ Java_com_wzf_ndkstudy_jni_AndroidNdkUtils_decodeFile(JNIEnv *env, jobject instan
                                                      jstring des_) {
     const char *src = (*env)->GetStringUTFChars(env, src_, 0);
     const char *des = (*env)->GetStringUTFChars(env, des_, 0);
-    LOG_I("decodeFilePath: %s\n", src);
+    LOG_I_DEBUG("encodeFilePath: %s", src);
     // TODO
     FILE *src_fp = fopen(src, "rb");
     if(src_fp == NULL){

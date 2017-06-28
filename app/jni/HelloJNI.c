@@ -224,7 +224,7 @@ JNIEXPORT void JNICALL Java_com_wzf_ndkstudy_jni_HelloJNI_deleteGlobalRef(JNIEnv
    }
 }
 
-//异常处理 JNI自己的异常无法在java捕获, 但是可以主动抛出异常让java层捕获
+//异常处理 JNI自己的异常无法在java通过exception捕获,但是可以通过Throwable捕获， 也可以主动抛出异常让java层捕获
 JNIEXPORT void JNICALL Java_com_wzf_ndkstudy_jni_HelloJNI_exception(JNIEnv * env, jobject jobj){
    jclass cls = (*env)->GetObjectClass(env, jobj);
    //没有key2的字段，会报异常, 需要检测，并且无法在kava层捕获

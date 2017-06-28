@@ -12,15 +12,26 @@
     tools:context="com.wzf.ndkstudy.MainActivity">
 
     <Button
-        android:id="@+id/FileEdDecodeActivity"
+        android:id="@+id/btn_create"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="FileEdDecodeActivity"/>
+        android:text="创建文件"/>
 
     <Button
-        android:id="@+id/FileSpliceActivity"
+        android:id="@+id/btn_encode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="FileSpliceActivity"/>
+        android:text="加密文件"/>
 
+    <Button
+        android:id="@+id/btn_decode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="解密文件"/>
+    <ImageView
+        android:id="@+id/im"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:background="@color/colorPrimary"/>
 </LinearLayout>

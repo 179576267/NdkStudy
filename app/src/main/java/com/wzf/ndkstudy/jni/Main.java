@@ -64,19 +64,20 @@ public class Main {
         /**
          * c异常处理
 //         */
-//        try {
-//            jni.exception();
-//        } catch (Exception e) {
-//            System.out.println("调用jni 发生异常 ： " + e.toString());
-//
-//        }
+        try {
+            jni.exception();
+        } catch (Exception e) {
+            System.out.println("调用jni 发生异常 ： " + e.toString());
+        }catch (Throwable e){
+            System.out.println("发生jni原生异常 ： " + e.toString());
+        }
 //        System.out.println("+++++++++++++++异常之后+++++++++++++++++");
         /**
          * 缓存策略，不断的调用一个native 方法
          */
-        for(int i = 0; i < 100; i++){
-            jni.jniCache();
-        }
+//        for(int i = 0; i < 100; i++){
+//            jni.jniCache();
+//        }
 
     }
 }
