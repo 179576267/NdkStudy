@@ -270,3 +270,4 @@ JNIEXPORT void JNICALL Java_com_wzf_ndkstudy_jni_HelloJNI_initIds(JNIEnv *env, j
    key_mid = (*env)->GetMethodID(env, cls, "callByC", "(I)Ljava/lang/String;");
    LOG_D("%s\n", "initIds has call");
 }
+
