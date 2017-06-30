@@ -85,8 +85,8 @@ Java_com_wzf_ndkstudy_jni_AndroidNdkUtils_spliceFile(JNIEnv *env, jobject instan
     int i = 0;
     int ch = '0';
     int index = 0;
+    char desName[100];
     for(; i < count; i++){
-        char desName[100];
         sprintf(desName, "%s%d", desStartName,i);//写字符串到s
         LOG_I_DEBUG("spliceDesFilePath%d: %s", i,src);
         FILE *des_fp = fopen(desName, "wb");
@@ -99,7 +99,6 @@ Java_com_wzf_ndkstudy_jni_AndroidNdkUtils_spliceFile(JNIEnv *env, jobject instan
         }
         fclose(des_fp);
     }
-
     fclose(src_fp);
     (*env)->ReleaseStringUTFChars(env, src_, src);
     (*env)->ReleaseStringUTFChars(env, desStartName_, desStartName);
@@ -116,8 +115,8 @@ Java_com_wzf_ndkstudy_jni_AndroidNdkUtils_mergeFile(JNIEnv *env, jobject instanc
     FILE *des_fp = fopen(des, "wb");
     int i = 0;
     int ch = '0';
+    char srcName[100];
     for(; i < count; i++){
-        char srcName[100];
         sprintf(srcName, "%s%d", srcStartName,i);//写字符串到s
         LOG_I_DEBUG("mergeSrcFilePath%d: %s", i,srcName);
         FILE *src_fp = fopen(srcName, "rb");
